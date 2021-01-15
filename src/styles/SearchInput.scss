@@ -1,0 +1,35 @@
+.search {
+  padding: 0 20px;
+  form {
+    display: flex;
+  }
+  input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    outline: none;
+    font-size: 1.4rem;
+    border: none;
+    background-color: #fff;
+  }
+  button {
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+    border-left: 1px solid #333;
+    outline: none;
+    font-weight: 700;
+    img {
+      width: 18px;
+    }
+    &:hover {
+      background-color: #f1f1f1;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.header {
+  margin-top: 61px;
+  height: 50vh;
+  min-height: 400px;
+  background-color: black;
+  color: white;
+  background-image: url('../img/background.jpg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: 85% -20px;
+  &__content {
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 6rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    p:last-child {
+      padding-left: 150px;
+    }
+  }
+}

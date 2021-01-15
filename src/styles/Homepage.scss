@@ -1,0 +1,147 @@
+.homepage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 200px 0;
+  color: white;
+  &__login {
+    text-align: center;
+    padding-top: 80px;
+  }
+  &__login-text {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 36px;
+    font-weight: normal;
+  }
+  &__login-button {
+    color: #999;
+    background-color: transparent;
+    padding: 20px 70px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    border: 2px solid #333;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.15s ease;
+    outline: none;
+    &:hover {
+      color: white;
+      border: 2px solid white;
+    }
+  }
+  &__select-conainer {
+    padding-top: 80px;
+    display: flex;
+  }
+  &__select {
+    position: relative;
+    width: calc(25% - 20px);
+    margin: 0 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    filter: grayscale(0.9);
+    margin-bottom: 50px;
+    &::after {
+      content: '';
+      display: block;
+      padding-top: 55%;
+    }
+    &:hover {
+      filter: grayscale(0);
+    }
+    &.active {
+      filter: grayscale(0);
+    }
+    &--characters {
+      background-color: #00897b;
+    }
+    &--planets {
+      background-color: #ff8f00;
+    }
+    &--species {
+      background-color: #880e4f;
+    }
+    &--starships {
+      background-color: #283593;
+    }
+  }
+  &__select-iamge {
+    position: absolute;
+    img {
+      width: 100%;
+    }
+  }
+  &__select-title {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 1.8rem;
+  }
+  &__select--characters &__select-iamge {
+    right: -10px;
+    bottom: -25px;
+    width: 45%;
+  }
+  &__select--planets &__select-iamge {
+    right: -20px;
+    top: -25px;
+    width: 60%;
+  }
+  &__select--species &__select-iamge {
+    right: 3px;
+    bottom: 10px;
+    width: 55%;
+  }
+  &__select--starships &__select-iamge {
+    right: -35px;
+    top: -15px;
+    width: 90%;
+  }
+  &__cards {
+    padding: 60px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  &__card {
+    width: 260px;
+    margin: 15px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background-color: rgba(51, 51, 51, 0.3);
+  }
+  &__card-name {
+    padding: 0 20px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    font-size: 3rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    border-bottom: 2px solid #333;
+  }
+  &__card-content {
+    padding: 20px;
+    p {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      span {
+        font-weight: 780;
+      }
+    }
+    a {
+      font-size: 1.2rem;
+      color: red;
+      color: #6978e7;
+    }
+  }
+  &__cards-empty {
+    font-weight: 300;
+    font-size: 5rem;
+    margin-top: 60px;
+  }
+}
