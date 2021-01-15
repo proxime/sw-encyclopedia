@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.357aaa7b.chunk.css",
+    "main.js": "/static/js/main.08119efe.chunk.js",
+    "main.js.map": "/static/js/main.08119efe.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.11f7e9f6.js",
+    "runtime-main.js.map": "/static/js/runtime-main.11f7e9f6.js.map",
+    "static/js/2.906de60c.chunk.js": "/static/js/2.906de60c.chunk.js",
+    "static/js/2.906de60c.chunk.js.map": "/static/js/2.906de60c.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.357aaa7b.chunk.css.map": "/static/css/main.357aaa7b.chunk.css.map",
+    "static/js/2.906de60c.chunk.js.LICENSE.txt": "/static/js/2.906de60c.chunk.js.LICENSE.txt",
+    "static/media/Header.scss": "/static/media/background.236014bf.jpg",
+    "static/media/character.675ed94a.png": "/static/media/character.675ed94a.png",
+    "static/media/planet.d4026d77.png": "/static/media/planet.d4026d77.png",
+    "static/media/species.19d80948.png": "/static/media/species.19d80948.png",
+    "static/media/Main.scss": "/static/media/stars.202e2aef.jpg",
+    "static/media/starship.87afd21b.png": "/static/media/starship.87afd21b.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.11f7e9f6.js",
+    "static/js/2.906de60c.chunk.js",
+    "static/css/main.357aaa7b.chunk.css",
+    "static/js/main.08119efe.chunk.js"
+  ]
+}
