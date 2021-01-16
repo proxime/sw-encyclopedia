@@ -2,7 +2,10 @@ import {
   GET_ENCYCLOPEDIA_DATA,
   SET_ENCYCLOPEDIA_ERROR,
   SET_ENCYCLOPEDIA_REQUEST,
+  SET_ENCYCLOPEDIA_FILTER,
   Result,
+  Filter,
+  EncyclopediaActionTypes,
 } from '../types/encyclopedia';
 import { ThunkInterface } from '../types/index';
 
@@ -62,5 +65,14 @@ export const getEncyclopediaDataAction = (): ThunkInterface => {
         payload: true,
       });
     }
+  };
+};
+
+export const setEncyclopediaFilter = (
+  filter: Filter
+): EncyclopediaActionTypes => {
+  return {
+    type: SET_ENCYCLOPEDIA_FILTER,
+    payload: filter,
   };
 };

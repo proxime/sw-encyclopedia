@@ -106,6 +106,9 @@ const Starships: React.FC = () => {
               />
             </div>
           )}
+          <Link to="/" className="details__back">
+            Back
+          </Link>
         </section>
       </main>
     </>

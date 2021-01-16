@@ -2,9 +2,12 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginAction } from '../store/actions/user';
-import { getEncyclopediaDataAction } from '../store/actions/encyclopedia';
+import {
+  getEncyclopediaDataAction,
+  setEncyclopediaFilter,
+} from '../store/actions/encyclopedia';
 import { RootState } from '../store/reducers';
-import { Result } from '../store/types/encyclopedia';
+import { Filter, Result } from '../store/types/encyclopedia';
 import Header from '../components/Header';
 import HomepageSelect from '../components/HomepageSelect';
 import Spinner from '../components/Spinner';
@@ -24,9 +27,6 @@ interface LocationState {
 }
 
 const Homepage: React.FC = () => {
-  const [filter, setFilter] = useState<
-    'characters' | 'planets' | 'species' | 'starships'
-  >('characters');
   const [search, setSearch] = useState('');
   const [elements, setElements] = useState<Result | null>([]);
   const { user } = useSelector((state: RootState) => state.user);
@@ -45,12 +45,16 @@ const Homepage: React.FC = () => {
   };
 
   const handleSetElements = useCallback(() => {
-    setElements(encyclopedia[filter]);
-  }, [setElements, encyclopedia, filter]);
+    setElements(encyclopedia[encyclopedia.filter]);
+  }, [setElements, encyclopedia]);
+
+  const handleChangeFilter = (filter: Filter) => {
+    dispatch(setEncyclopediaFilter(filter));
+  };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const renderCard = (element: any) => {
-    switch (filter) {
+    switch (encyclopedia.filter) {
       case 'characters':
         return (
           <>
@@ -133,29 +137,29 @@ const Homepage: React.FC = () => {
                   title="Characters"
                   image={characterImg}
                   customClass="characters"
-                  active={filter === 'characters'}
-                  setActive={() => setFilter('characters')}
+                  active={encyclopedia.filter === 'characters'}
+                  setActive={() => handleChangeFilter('characters')}
                 />
                 <HomepageSelect
                   title="Planets"
                   image={planetImg}
                   customClass="planets"
-                  active={filter === 'planets'}
-                  setActive={() => setFilter('planets')}
+                  active={encyclopedia.filter === 'planets'}
+                  setActive={() => handleChangeFilter('planets')}
                 />
                 <HomepageSelect
                   title="Species"
                   image={speciesImg}
                   customClass="species"
-                  active={filter === 'species'}
-                  setActive={() => setFilter('species')}
+                  active={encyclopedia.filter === 'species'}
+                  setActive={() => handleChangeFilter('species')}
                 />
                 <HomepageSelect
                   title="Starships"
                   image={starshipImg}
                   customClass="starships"
-                  active={filter === 'starships'}
-                  setActive={() => setFilter('starships')}
+                  active={encyclopedia.filter === 'starships'}
+                  setActive={() => handleChangeFilter('starships')}
                 />
               </div>
               <SearchInput onSubmit={handleSetSearchValue} />
@@ -165,7 +169,11 @@ const Homepage: React.FC = () => {
                 <section className="homepage__cards">
                   {filteredElements && filteredElements.length > 0 ? (
                     filteredElements?.map((el) => (
-                      <HomepageCard key={el.name} name={el.name} type={filter}>
+                      <HomepageCard
+                        key={el.name}
+                        name={el.name}
+                        type={encyclopedia.filter}
+                      >
                         {renderCard(el)}
                       </HomepageCard>
                     ))

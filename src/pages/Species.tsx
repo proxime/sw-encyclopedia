@@ -103,6 +103,9 @@ const SpeciesPage: React.FC = () => {
               <DetailsElement title="language:" value={element.language} />
             </div>
           )}
+          <Link to="/" className="details__back">
+            Back
+          </Link>
         </section>
       </main>
     </>

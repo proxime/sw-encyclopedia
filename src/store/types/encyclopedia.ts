@@ -3,7 +3,10 @@ import { LogoutAction } from './user';
 export const GET_ENCYCLOPEDIA_DATA = 'GET_ENCYCLOPEDIA_DATA';
 export const SET_ENCYCLOPEDIA_REQUEST = 'SET_ENCYCLOPEDIA_REQUEST';
 export const SET_ENCYCLOPEDIA_ERROR = 'SET_ENCYCLOPEDIA_ERROR';
+export const SET_ENCYCLOPEDIA_FILTER = 'SET_ENCYCLOPEDIA_FILTER';
 
+export type Result = (Character | Planet | Species | Starship)[];
+export type Filter = 'characters' | 'planets' | 'species' | 'starships';
 export interface Planet {
   name: string;
   rotation_period: string;
@@ -69,9 +72,8 @@ export interface EncyclopediaState {
   loading: boolean;
   error: boolean;
   fetched: boolean;
+  filter: Filter;
 }
-
-export type Result = (Character | Planet | Species | Starship)[];
 
 interface GetEncyclopediaDataAction {
   type: typeof GET_ENCYCLOPEDIA_DATA;
@@ -88,8 +90,14 @@ interface SetEndyclopediaError {
   payload: boolean;
 }
 
+interface SetEndyclopediaFilter {
+  type: typeof SET_ENCYCLOPEDIA_FILTER;
+  payload: Filter;
+}
+
 export type EncyclopediaActionTypes =
   | GetEncyclopediaDataAction
   | LogoutAction
   | SetEndyclopediaRequest
-  | SetEndyclopediaError;
+  | SetEndyclopediaError
+  | SetEndyclopediaFilter;

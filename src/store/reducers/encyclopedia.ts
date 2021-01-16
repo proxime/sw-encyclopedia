@@ -4,6 +4,7 @@ import {
   GET_ENCYCLOPEDIA_DATA,
   SET_ENCYCLOPEDIA_ERROR,
   SET_ENCYCLOPEDIA_REQUEST,
+  SET_ENCYCLOPEDIA_FILTER,
 } from '../types/encyclopedia';
 import { LOGOUT } from '../types/user';
 
@@ -15,6 +16,7 @@ const initState: EncyclopediaState = {
   loading: true,
   error: false,
   fetched: false,
+  filter: 'characters',
 };
 
 export default (
@@ -41,6 +43,11 @@ export default (
         ...state,
         error: action.payload,
         loading: false,
+      };
+    case SET_ENCYCLOPEDIA_FILTER:
+      return {
+        ...state,
+        filter: action.payload,
       };
     case LOGOUT:
       return initState;

@@ -87,6 +87,9 @@ const Characters: React.FC = () => {
               />
             </div>
           )}
+          <Link to="/" className="details__back">
+            Back
+          </Link>
         </section>
       </main>
     </>
