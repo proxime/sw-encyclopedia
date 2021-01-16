@@ -1,7 +1,6 @@
-import React, { FormEvent, ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
 import '../styles/SearchInput.scss';
-import searchImg from '../img/search.png';
 
 export interface SearchInputProps {
   onSubmit: (value: string) => void;
@@ -12,17 +11,12 @@ const SearchInput: React.FC<SearchInputProps> = ({ onSubmit }) => {
 
   const handleChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    onSubmit(value);
+    onSubmit(e.target.value);
   };
 
   return (
     <div className="search">
-      <form onSubmit={handleSubmit}>
+      <form>
         <input
           type="text"
           value={value}
@@ -30,9 +24,6 @@ const SearchInput: React.FC<SearchInputProps> = ({ onSubmit }) => {
           name="search"
           placeholder="Search by name"
         />
-        <button type="submit">
-          <img src={searchImg} alt="" />
-        </button>
       </form>
     </div>
   );
