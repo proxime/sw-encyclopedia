@@ -133,36 +133,40 @@ const Homepage: React.FC = () => {
           {user ? (
             <>
               <div className="homepage__select-conainer">
-                <HomepageSelect
-                  title="Characters"
-                  image={characterImg}
-                  customClass="characters"
-                  active={encyclopedia.filter === 'characters'}
-                  setActive={() => handleChangeFilter('characters')}
-                />
-                <HomepageSelect
-                  title="Planets"
-                  image={planetImg}
-                  customClass="planets"
-                  active={encyclopedia.filter === 'planets'}
-                  setActive={() => handleChangeFilter('planets')}
-                />
-                <HomepageSelect
-                  title="Species"
-                  image={speciesImg}
-                  customClass="species"
-                  active={encyclopedia.filter === 'species'}
-                  setActive={() => handleChangeFilter('species')}
-                />
-                <HomepageSelect
-                  title="Starships"
-                  image={starshipImg}
-                  customClass="starships"
-                  active={encyclopedia.filter === 'starships'}
-                  setActive={() => handleChangeFilter('starships')}
-                />
+                <div className="homepage__select-section">
+                  <HomepageSelect
+                    title="Characters"
+                    image={characterImg}
+                    customClass="characters"
+                    active={encyclopedia.filter === 'characters'}
+                    setActive={() => handleChangeFilter('characters')}
+                  />
+                  <HomepageSelect
+                    title="Planets"
+                    image={planetImg}
+                    customClass="planets"
+                    active={encyclopedia.filter === 'planets'}
+                    setActive={() => handleChangeFilter('planets')}
+                  />
+                </div>
+                <div className="homepage__select-section">
+                  <HomepageSelect
+                    title="Species"
+                    image={speciesImg}
+                    customClass="species"
+                    active={encyclopedia.filter === 'species'}
+                    setActive={() => handleChangeFilter('species')}
+                  />
+                  <HomepageSelect
+                    title="Starships"
+                    image={starshipImg}
+                    customClass="starships"
+                    active={encyclopedia.filter === 'starships'}
+                    setActive={() => handleChangeFilter('starships')}
+                  />
+                </div>
               </div>
-              <SearchInput onSubmit={handleSetSearchValue} />
+              <SearchInput onSubmit={handleSetSearchValue} search={search} />
               {encyclopedia.loading ? (
                 <Spinner />
               ) : (

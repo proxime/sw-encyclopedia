@@ -4,10 +4,11 @@ import '../styles/SearchInput.scss';
 
 export interface SearchInputProps {
   onSubmit: (value: string) => void;
+  search: string;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({ onSubmit }) => {
-  const [value, setValue] = useState('');
+const SearchInput: React.FC<SearchInputProps> = ({ onSubmit, search }) => {
+  const [value, setValue] = useState(search);
 
   const handleChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
