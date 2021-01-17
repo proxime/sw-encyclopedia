@@ -69,7 +69,7 @@ const Starships: React.FC = () => {
         <div className="main__background"></div>
         <section className="details">
           <div className="details__path">
-            <Link to="/">Home</Link> / <span>Characters</span> /{' '}
+            <Link to="/">Home</Link> / <span>Starships</span> /{' '}
             <span>{name}</span>
           </div>
           {element && (
