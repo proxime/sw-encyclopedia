@@ -33,7 +33,8 @@ const fetchData = async (url: string): Promise<Result> => {
 
     return result;
   } catch (err) {
-    throw new Error(err);
+    console.error({ err });
+    throw new Error('Error occured while fetching data.');
   }
 };
 

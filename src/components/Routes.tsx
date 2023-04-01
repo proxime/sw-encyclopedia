@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
-import PrivateRoute from './PrivateRoute';
 import Homepage from '../pages/Homepage';
 import Characters from '../pages/Characters';
 import Planets from '../pages/Planets';
@@ -11,10 +10,10 @@ const Routes: React.FC = () => {
   return (
     <Switch>
       <Route exact path="/" component={Homepage} />
-      <PrivateRoute path="/characters/:name" component={Characters} />
-      <PrivateRoute path="/planets/:name" component={Planets} />
-      <PrivateRoute path="/species/:name" component={Species} />
-      <PrivateRoute path="/starships/:name" component={Starships} />
+      <Route path="/characters/:name" component={Characters} />
+      <Route path="/planets/:name" component={Planets} />
+      <Route path="/species/:name" component={Species} />
+      <Route path="/starships/:name" component={Starships} />
       <Redirect to="/" />
     </Switch>
   );

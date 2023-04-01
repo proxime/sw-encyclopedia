@@ -1,5 +1,3 @@
-import { LogoutAction } from './user';
-
 export const GET_ENCYCLOPEDIA_DATA = 'GET_ENCYCLOPEDIA_DATA';
 export const SET_ENCYCLOPEDIA_REQUEST = 'SET_ENCYCLOPEDIA_REQUEST';
 export const SET_ENCYCLOPEDIA_ERROR = 'SET_ENCYCLOPEDIA_ERROR';
@@ -97,7 +95,6 @@ interface SetEndyclopediaFilter {
 
 export type EncyclopediaActionTypes =
   | GetEncyclopediaDataAction
-  | LogoutAction
   | SetEndyclopediaRequest
   | SetEndyclopediaError
   | SetEndyclopediaFilter;

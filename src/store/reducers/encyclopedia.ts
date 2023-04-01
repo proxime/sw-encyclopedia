@@ -6,7 +6,6 @@ import {
   SET_ENCYCLOPEDIA_REQUEST,
   SET_ENCYCLOPEDIA_FILTER,
 } from '../types/encyclopedia';
-import { LOGOUT } from '../types/user';
 
 const initState: EncyclopediaState = {
   planets: null,
@@ -49,8 +48,6 @@ export default (
         ...state,
         filter: action.payload,
       };
-    case LOGOUT:
-      return initState;
     default:
       return state;
   }

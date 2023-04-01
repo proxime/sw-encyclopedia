@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginAction } from '../store/actions/user';
 import {
   getEncyclopediaDataAction,
   setEncyclopediaFilter,
@@ -29,16 +28,11 @@ interface LocationState {
 const Homepage: React.FC = () => {
   const [search, setSearch] = useState('');
   const [elements, setElements] = useState<Result | null>([]);
-  const { user } = useSelector((state: RootState) => state.user);
   const encyclopedia = useSelector((state: RootState) => state.encyclopedia);
 
   const dispatch = useDispatch();
   const location = useLocation<LocationState>();
   const history = useHistory<LocationState>();
-
-  const handleLogin = () => {
-    dispatch(loginAction());
-  };
 
   const handleSetSearchValue = (value: string) => {
     setSearch(value);
@@ -105,20 +99,20 @@ const Homepage: React.FC = () => {
   };
 
   useEffect(() => {
-    if (user && !encyclopedia.fetched) {
+    if (!encyclopedia.fetched) {
       dispatch(getEncyclopediaDataAction());
     }
-  }, [dispatch, user, encyclopedia.fetched]);
+  }, [dispatch, encyclopedia.fetched]);
 
   useEffect(() => {
     handleSetElements();
   }, [handleSetElements]);
 
   useEffect(() => {
-    if (user && location.state?.from?.pathname) {
+    if (location.state?.from?.pathname) {
       history.push(location.state.from.pathname);
     }
-  }, [user, location, history]);
+  }, [location, history]);
 
   const filteredElements = elements?.filter(
     (el) => el.name.toLowerCase().search(search.toLowerCase()) > -1
@@ -130,76 +124,59 @@ const Homepage: React.FC = () => {
       <main className="main">
         <div className="main__background"></div>
         <section className="homepage">
-          {user ? (
-            <>
-              <div className="homepage__select-conainer">
-                <div className="homepage__select-section">
-                  <HomepageSelect
-                    title="Characters"
-                    image={characterImg}
-                    customClass="characters"
-                    active={encyclopedia.filter === 'characters'}
-                    setActive={() => handleChangeFilter('characters')}
-                  />
-                  <HomepageSelect
-                    title="Planets"
-                    image={planetImg}
-                    customClass="planets"
-                    active={encyclopedia.filter === 'planets'}
-                    setActive={() => handleChangeFilter('planets')}
-                  />
-                </div>
-                <div className="homepage__select-section">
-                  <HomepageSelect
-                    title="Species"
-                    image={speciesImg}
-                    customClass="species"
-                    active={encyclopedia.filter === 'species'}
-                    setActive={() => handleChangeFilter('species')}
-                  />
-                  <HomepageSelect
-                    title="Starships"
-                    image={starshipImg}
-                    customClass="starships"
-                    active={encyclopedia.filter === 'starships'}
-                    setActive={() => handleChangeFilter('starships')}
-                  />
-                </div>
-              </div>
-              <SearchInput onSubmit={handleSetSearchValue} search={search} />
-              {encyclopedia.loading ? (
-                <Spinner />
-              ) : (
-                <section className="homepage__cards">
-                  {filteredElements && filteredElements.length > 0 ? (
-                    filteredElements?.map((el) => (
-                      <HomepageCard
-                        key={el.name}
-                        name={el.name}
-                        type={encyclopedia.filter}
-                      >
-                        {renderCard(el)}
-                      </HomepageCard>
-                    ))
-                  ) : (
-                    <h3 className="homepage__cards-empty">No search results</h3>
-                  )}
-                </section>
-              )}
-            </>
-          ) : (
-            <div className="homepage__login">
-              <h4 className="homepage__login-text">
-                Sign in to unlock encyclopedia content
-              </h4>
-              <button
-                type="button"
-                className="homepage__login-button"
-                onClick={handleLogin}
-              >
-                Sign in
-              </button>
+          <div className="homepage__select-conainer">
+            <div className="homepage__select-section">
+              <HomepageSelect
+                title="Characters"
+                image={characterImg}
+                customClass="characters"
+                active={encyclopedia.filter === 'characters'}
+                setActive={() => handleChangeFilter('characters')}
+              />
+              <HomepageSelect
+                title="Planets"
+                image={planetImg}
+                customClass="planets"
+                active={encyclopedia.filter === 'planets'}
+                setActive={() => handleChangeFilter('planets')}
+              />
             </div>
+            <div className="homepage__select-section">
+              <HomepageSelect
+                title="Species"
+                image={speciesImg}
+                customClass="species"
+                active={encyclopedia.filter === 'species'}
+                setActive={() => handleChangeFilter('species')}
+              />
+              <HomepageSelect
+                title="Starships"
+                image={starshipImg}
+                customClass="starships"
+                active={encyclopedia.filter === 'starships'}
+                setActive={() => handleChangeFilter('starships')}
+              />
+            </div>
+          </div>
+          <SearchInput onSubmit={handleSetSearchValue} search={search} />
+          {encyclopedia.loading ? (
+            <Spinner />
+          ) : (
+            <section className="homepage__cards">
+              {filteredElements && filteredElements.length > 0 ? (
+                filteredElements?.map((el) => (
+                  <HomepageCard
+                    key={el.name}
+                    name={el.name}
+                    type={encyclopedia.filter}
+                  >
+                    {renderCard(el)}
+                  </HomepageCard>
+                ))
+              ) : (
+                <h3 className="homepage__cards-empty">No search results</h3>
+              )}
+            </section>
           )}
         </section>
       </main>
